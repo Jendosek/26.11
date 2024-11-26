@@ -10,10 +10,20 @@ namespace ConsoleApp3.Entities
     {
         private double _area;
 
+        public Shop()
+        {
+            _area = 0;
+        }
+
+        public Shop(double area)
+        {
+            _area = area;
+        }
+
         public double Area
         {
-            get 
-            { 
+            get
+            {
                 return _area;
             }
             set
@@ -63,7 +73,20 @@ namespace ConsoleApp3.Entities
 
         public override bool Equals(object obj)
         {
+            if (obj is Shop otherShop)
+            {
+                return this.Area == otherShop.Area;
+            }
+            else
+            {
+                Console.WriteLine("Об'єкт не є типу Shop!");
+                return false;
+            }
+        }
 
+        public override string ToString()
+        {
+            return $"Площа магазину: {_area}";
         }
     }
 }
